@@ -1,0 +1,645 @@
+{
+	"easycom": { //easycom,按需自动注册组件。原则上可以把所有页面引入组件方法删掉，会自动引入。
+		"autoscan": true,
+		"custom": {
+			/* "uni-(.*)": "@/components/uni-$1/uni-$1.vue", */
+			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+		}
+	},
+	"pages": [{
+			"path": "pages/index/index",
+			"name": "home",
+			"title": "首页",
+			"aliasPath": "/", //对于h5端你必须在首页加上aliasPath并设置为/
+			"style": {
+				"navigationBarTitleText": "推荐",
+				"enablePullDownRefresh": true,
+				"navigationStyle": "custom"
+			},
+			"meta": {
+				"auth": false, //需要登录
+				"async": true, //是否同步
+				"title": "首页", //标题
+				"group": "商城" //分组
+			}
+		},
+		{
+			"path": "pages/index/user",
+			"name": "user",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			},
+			"meta": {
+				"auth": false,
+				"async": true,
+				"title": "我的",
+				"group": "用户"
+			}
+		}, {
+			"path": "pages/index/videoGame",
+			"name": "videoGame",
+			"style": {
+				"navigationBarTitleText": "游戏"
+			},
+			"meta": {
+				"auth": false,
+				"async": true,
+				"title": "电玩充值",
+				"group": "电玩"
+			}
+		},
+		{
+			"path": "pages/index/view",
+			"name": "view",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationStyle": "custom"
+
+			},
+			"meta": {
+				"auth": false,
+				"async": true,
+				"title": "自定义页面",
+				"group": "自定义页面"
+			}
+		}
+
+	],
+	// 分包加载
+	// 不要接受编辑器的组件放置分包建议。因为那些不是在单个分包内使用的,也不知道为啥老报错。
+	"subPackages": [{
+			"root": "pages/app",
+			"pages": [{
+					"path": "coupon/list",
+					"style": {
+						"navigationBarTitleText": "优惠券"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "优惠劵中心",
+						"group": "优惠券"
+					}
+				},
+				{
+					"path": "coupon/detail",
+					"style": {
+						"navigationBarTitleText": "优惠劵详情",
+						"navigationStyle": "custom"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "优惠劵详情",
+						"group": "优惠券"
+					}
+				},
+				{
+					"path": "score/list",
+					"style": {
+						"navigationBarTitleText": "积分商城",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "积分商城",
+						"group": "应用"
+					}
+				},
+				{
+					"path": "merchant/index",
+					"style": {
+						"navigationBarTitleText": "",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": true
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "商户信息",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "merchant/info",
+					"style": {
+						"navigationBarTitleText": "门店信息"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": false,
+						"title": "门店信息",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "merchant/list",
+					"style": {
+						"navigationBarTitleText": "切换门店"
+					},
+					"meta": {
+						"auth": true,
+						"async": false,
+						"title": "切换门店",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "merchant/detail",
+					"style": {
+						"navigationBarTitleText": "订单详情"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": false
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/goods",
+			"pages": [
+				// 商品goods------start
+				{
+					"path": "list",
+					"style": {
+						"navigationBarTitleText": "商品列表",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "商品列表",
+						"group": "商城"
+					}
+				},
+				{
+					"path": "comment-list",
+					"style": {
+						"navigationBarTitleText": "商品评价"
+
+					},
+					"meta": {
+						"auth": false,
+						"async": false
+					}
+				},
+				{
+					"path": "detail/index",
+					"style": {
+						"navigationBarTitleText": "商品详情"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "商品详情",
+						"group": "商城"
+					}
+				}
+				// 商品goods------end
+
+			]
+		},
+		{
+			"root": "pages/location",
+			"pages": [
+				// 定位------start
+				{
+					"path": "list",
+					"style": {
+						"navigationBarTitleText": "定位",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "定位",
+						"group": "位置信息"
+					}
+				}
+				// 定位------end
+			]
+		},
+		{
+			"root": "pages/public",
+			"pages": [
+				// 公共public ------ start
+
+				{
+					"path": "kefu/index",
+					"name": "kefu",
+					"style": {
+						"navigationBarTitleText": ""
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "客服",
+						"group": "通用"
+					}
+				},
+				{
+					"path": "richtext",
+					"style": {
+						"navigationBarTitleText": "" //公共富文本
+
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "富文本",
+						"group": "通用"
+					}
+				},
+				{
+					"path": "webview",
+					"style": {
+						"navigationBarTitleText": "" //外部链接
+					},
+					"meta": {
+
+					}
+				},
+				{
+					"path": "feedback",
+					"style": {
+						"navigationBarTitleText": "意见反馈"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "意见反馈",
+						"group": "商城"
+					}
+				},
+				{
+					"path": "forgot",
+					"style": {
+						"navigationBarTitleText": "找回密码",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "找回密码",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "login",
+					"name": "login",
+					"style": {
+						"navigationBarTitleText": "登录",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "登录",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "register",
+					"style": {
+						"navigationBarTitleText": "注册",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "注册",
+						"group": "用户"
+					}
+				},
+
+				{
+					"path": "faq",
+					"style": {
+						"navigationBarTitleText": "常见问题"
+
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "常见问题",
+						"group": "通用"
+					}
+				}
+				// 公共public ------ end
+			]
+		},
+		{
+			"root": "pages/user",
+			"pages": [
+
+				// 我的user ------start
+				{
+					"path": "log",
+					"style": {
+						"navigationBarTitleText": "浏览足迹"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "浏览足迹",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "home/index",
+					"style": {
+						"enablePullDownRefresh": true,
+						"navigationBarTitleText": "我的余额"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "我的余额",
+						"group": "我的"
+					}
+				}, {
+					"path": "withdraw/index",
+					"style": {
+						"enablePullDownRefresh": true,
+						"navigationBarTitleText": "余额提现"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "余额提现",
+						"group": "我的"
+					}
+				},
+				{
+					"path": "sign/index",
+					"style": {
+						"navigationBarTitleText": "签到中心"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "签到中心",
+						"group": "通用"
+					}
+				},{
+					"path": "equipment/list",
+					"style": {
+						"navigationBarTitleText": "设备管理",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "设备管理",
+						"group": "我的"
+					}
+				},{
+					"path": "equipment/detail",
+					"style": {
+						"navigationBarTitleText": "设备详情"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "设备详情",
+						"group": "我的"
+					}
+				},
+				{
+					"path": "register",
+					"style": {
+						"navigationBarTitleText": "注册",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "注册",
+						"group": "用户"
+					}
+				},
+
+				{
+					"path": "set",
+					"style": {
+						"navigationBarTitleText": "系统设置"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "系统设置",
+						"group": "通用"
+					}
+				},
+				{
+					"path": "edit-password",
+					"style": {
+						"navigationBarTitleText": "修改密码"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "修改密码",
+						"group": "用户"
+
+					}
+				}, {
+					"path": "personal",
+					"style": {
+						"navigationBarTitleText": "个人二维码"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "二维码",
+						"group": "用户"
+
+					}
+				},
+				{
+					"path": "favorite",
+					"style": {
+						"navigationBarTitleText": "收藏"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "我的收藏",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "info",
+					"style": {
+						"navigationBarTitleText": "个人信息"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "个人信息",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "edit-phone",
+					"style": {
+						"navigationBarTitleText": "修改手机号"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "修改手机号",
+						"group": "用户"
+					}
+				}, {
+					"path": "group-ticket",
+					"style": {
+						"navigationBarTitleText": "兑换"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "兑换赠送",
+						"group": "用户"
+					}
+				}, {
+					"path": "groupticketinfo",
+					"style": {
+						"navigationBarTitleText": "团体票详情"
+					},
+					"meta": {
+						"auth": false,
+						"async": true,
+						"title": "详情",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "wallet/index",
+					"style": {
+						"navigationBarTitleText": "我的钱包",
+						"navigationBarTextStyle": "white",
+						"navigationStyle": "custom"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "我的钱包",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "wallet/bind-bank",
+					"style": {
+						"navigationBarTitleText": "绑定会员卡",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "绑定会员卡",
+						"group": "用户"
+					}
+				}, {
+					"path": "wallet/recharge",
+					"style": {
+						"navigationBarTitleText": "充值"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "充值",
+						"group": "用户"
+
+					}
+				},
+				{
+					"path": "wallet/log",
+					"style": {
+						"navigationBarTitleText": "钱包明细"
+
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "钱包明细",
+						"group": "用户"
+					}
+				},
+				{
+					"path": "wallet/score-balance",
+					"style": {
+						"navigationBarTitleText": "积分",
+						"navigationStyle": "custom"
+					},
+					"meta": {
+						"auth": true,
+						"async": true,
+						"title": "我的积分",
+						"group": "用户"
+					}
+				}
+				// 我的user ------ end
+			]
+		}
+	],
+	// 分包预加载规则
+	// "preloadRule": {
+	// 	"pages/index/index": {
+	// 		"network": "all",
+	// 		"packages": ["__APP__"]
+	// 	}
+	// },
+	// 默认导航栏样式
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#fff",
+		"navigationStyle": "default", //默认是default，即带有原生导航栏。custom,取消导航栏。
+		"SplitLineStyles": {
+			"color": "#ccc",
+			"height": "1px"
+		}
+	},
+	"tabBar": {
+		"color": "#999",
+		"selectedColor": "#999000",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"height": "50px",
+		"fontSize": "10px",
+		"iconWidth": "24px",
+		"spacing": "3px",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "static/imgs/tabbar/tab_home.png",
+			"selectedIconPath": "/static/imgs/tabbar/tab_home_sel.png"
+		}, {
+			"pagePath": "pages/index/videoGame",
+			"iconPath": "static/tabbar/_2021052510035862.png",
+			"selectedIconPath": "static/tabbar/_202105251003584.png",
+			"text": "游乐"
+		}, {
+			"pagePath": "pages/index/user",
+			"iconPath": "static/tabbar/_202105251003587.png",
+			"selectedIconPath": "static/tabbar/_2021052510035861.png",
+			"text": "我的"
+		}]
+	}
+
+}

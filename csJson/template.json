@@ -1,0 +1,291 @@
+{
+	"code": 1,
+	"msg": "模板数据",
+	"time": "1609145764",
+	"data": {
+		"home": [{
+			"id": 17947,
+			"type": "search",
+			"category": "home",
+			"name": "搜索",
+			"content": "电影，商品",
+			"decorate_id": 1
+		}, {
+			"id": 17948,
+			"type": "banner",
+			"category": "home",
+			"name": "轮播图",
+			"content": {
+				"name": "",
+				"style": 1,
+				"list": []
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17949,
+			"type": "menu",
+			"category": "home",
+			"name": "菜单组",
+			"content": {
+				"name": "",
+				"style": 4,
+				"list": []
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17950,
+			"type": "coupons",
+			"category": "home",
+			"name": "优惠券",
+			"content": {
+				"ids": "3",
+				"name": ""
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17949,
+			"type": "spread",
+			"category": "home",
+			"name": "二级广告",
+			"content": {},
+			"decorate_id": 1
+		}, {
+			"id": 17951,
+			"type": "adv",
+			"category": "home",
+			"name": "广告魔方",
+			"content": {
+				"list": [{
+					"image": "https://shopro-1253949872.file.myqcloud.com/uploads/20200704/0669a6adec3f35d45ec66a082e03774f.png",
+					"name": "",
+					"path": "/pages/app/coupon/list",
+					"path_name": "优惠券-优惠劵中心",
+					"path_type": 1
+				}, {
+					"image": "https://shopro-1253949872.file.myqcloud.com/uploads/20200704/cddb5d90a4241f6235d16368534bc730.png",
+					"name": "",
+					"path": "/pages/activity/groupon/list",
+					"path_name": "活动-今日必拼",
+					"path_type": 1
+				}, {
+					"image": "https://shopro-1253949872.file.myqcloud.com/uploads/20200704/e047d312fb5930de972ae288b9b3bae7.png",
+					"name": "",
+					"path": "/pages/app/score/list",
+					"path_name": "应用-积分商城",
+					"path_type": 1
+				}],
+				"name": "",
+				"style": 3
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17952,
+			"type": "groupon",
+			"category": "home",
+			"name": "热映影片",
+			"content": {
+				"id": 126,
+				"name": "热映影片",
+				"groupon_name": "12.12",
+				"team_num": "2"
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17953,
+			"type": "seckill",
+			"category": "home",
+			"name": "秒杀",
+			"content": {
+				"id": 126,
+				"name": "限时抢购",
+				"seckill_name": "1212秒杀"
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17954,
+			"type": "title-block",
+			"category": "home",
+			"name": "标题栏",
+			"content": {
+				"name": "猜你喜欢",
+				"color": "#000000",
+				"image": "https://cfzx.gzfzdev.com/movie/uploadFiles/image/title1.png"
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17955,
+			"type": "goods-list",
+			"category": "home",
+			"name": "自定义商品",
+			"content": {
+				"ids": "2,3,5,9,10,15",
+				"image": "https://shopro-1253949872.file.myqcloud.com",
+				"name": ""
+			},
+			"decorate_id": 1
+		}],
+		"user": [{
+			"id": 17958,
+			"type": "user",
+			"category": "user",
+			"name": "用户卡片",
+			"content": {
+				"name": "用户卡片",
+				"image": "https://shopro-1253949872.file.myqcloud.com/uploads/20200704/3fd138c2e95f80ecc11eebe312ffce94.png",
+				"style": 2,
+				"color": "#eeeeee"
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17959,
+			"type": "order-card",
+			"category": "user",
+			"name": "订单卡片",
+			"content": [],
+			"decorate_id": 1
+		}, {
+			"id": 17960,
+			"type": "wallet-card",
+			"category": "user",
+			"name": "资产卡片",
+			"content": [],
+			"decorate_id": 1
+		}, {
+			"id": 17961,
+			"type": "nav-list",
+			"category": "user",
+			"name": "宫格列表",
+			"content": {
+				"name": "",
+				"list": [
+					{
+						"name": "商家注册",
+						"image": "https://i.postimg.cc/MKBRVTLf/image.png",
+						"path": "/pages/public/register",
+						"path_name": "注册",
+						"path_type": 1
+					},
+					{
+						"name": "设备管理",
+						"image": "https://i.postimg.cc/0QRkDkKZ/image.png",
+						"path": "/pages/user/equipment/list",
+						"path_name": "设备",
+						"path_type": 1
+					},{
+						"name": "收益统计",
+						"image": "https://i.postimg.cc/8cb3CLL0/ab05b484afd9e2a21977adc79d0c456e.png",
+						"path": "/pages/user/home/index",
+						"path_name": "收益",
+						"path_type": 1
+					},
+					{
+						"name": "联系客服",
+						"image": "https://i.postimg.cc/Qd5b8SDP/image.png",
+						"path": "/pages/public/kefu/index",
+						"path_name": "客服",
+						"path_type": 2
+					}
+				]
+			},
+			"decorate_id": 1
+		}, {
+			"id": 17962,
+			"type": "goods-list",
+			"category": "user",
+			"name": "自定义商品",
+			"content": {
+				"ids": "2,3,5,10",
+				"image": "",
+				"name": ""
+			},
+			"decorate_id": 1
+		}],
+		"tabbar": [{
+			"id": 17957,
+			"type": "tabbar",
+			"category": "tabbar",
+			"name": "底部导航",
+			"content": {
+				"style": 1,
+				"color": "#999",
+				"activeColor": "#999000",
+				"list": [{
+					"name": "电影",
+					"image": "https://i.postimg.cc/xTWwc9Wm/20210419143757.png",
+					"activeImage": "https://i.postimg.cc/wxrPG6xr/20210419144423.png",
+					"path": "/pages/index/circuit",
+					"path_name": "电影",
+					"path_type": 1
+				}, {
+					"name": "卖品",
+					"image": "https://i.postimg.cc/ZK2WnybL/202104191448131.png",
+					"activeImage": "https://i.postimg.cc/4487CSjq/20210419144813.png",
+					"path": "/pages/menu/menu",
+					"path_name": "商品-OTO购买",
+					"path_type": 1
+				}, {
+					"name": "活动",
+					"image": "https://i.postimg.cc/kgGL1BKL/202104191448133.png",
+					"activeImage": "https://i.postimg.cc/4NBrQz7z/202104191448132.png",
+					"path": "/pages/index/index",
+					"path_name": "主页-活动",
+					"path_type": 1
+				}, {
+					"name": "电玩",
+					"image": "https://i.postimg.cc/qvWyP564/202104191448135.png",
+					"activeImage": "https://i.postimg.cc/PfMbCy9Q/202104191448134.png",
+					"path": "/pages/index/videoGame",
+					"path_name": "电玩-充值",
+					"path_type": 1
+				}, {
+					"name": "我的",
+					"image": "https://i.postimg.cc/9F53fm37/202104191448137.png",
+					"activeImage": "https://i.postimg.cc/7Z9jXS53/202104191448136.png",
+					"path": "/pages/index/user",
+					"path_name": "用户-我的",
+					"path_type": 1
+				}],
+				"isshow": true
+			},
+			"decorate_id": 1
+		}],
+		"popup": [{
+			"id": 17956,
+			"type": "popup",
+			"category": "popup",
+			"name": "弹窗提醒",
+			"content": {
+				"list": [{
+					"image": "https://shopro-1253949872.file.myqcloud.com/uploads/20200704/9136ecddcddf6607184fab689207e7e3.png",
+					"path": "/pages/app/coupon/list",
+					"path_name": "优惠劵中心",
+					"page": ["/pages/index/index"],
+					"page_name": ["商城-首页"],
+					"path_type": 1,
+					"style": 1
+				}]
+			},
+			"decorate_id": 1
+		}],
+		"float-button": [{
+			"id": 17963,
+			"type": "float-button",
+			"category": "float-button",
+			"name": "悬浮按钮",
+			"content": {
+				"image": "https://i.postimg.cc/HW2CTdd6/dianpu.png",
+				"list": [{
+					"name": "门店",
+					"style": 3,
+					"image": "",
+					"btnimage": "https://i.postimg.cc/HW2CTdd6/dianpu.png",
+					"path": "",
+					"path_name": "切换门店",
+					"path_type": 1,
+					"page": []
+				}]
+			},
+			"decorate_id": 1
+		}]
+	}
+}
