@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import { mapMutations, mapActions, mapState } from 'vuex';
 export default {
 	data() {
 		return {
@@ -104,6 +105,11 @@ export default {
 	watch: {
 		extract(oldVal, newVal) {}
 	},
+	computed: {
+		...mapState({
+			userInfo: state => state.user.userInfo,
+		})
+	},
 	onLoad() {
 		this.$json.loading(true);
 		this.loadData();
@@ -116,7 +122,7 @@ export default {
 			const res = await this.$json.json('pool');
 			this.lowest = res.least_money;
 			this.fee = res.fee;
-			this.pool = res.pool;
+			this.pool = this.userInfo.merchants.merchantsCommission;
 			this.$nextTick(() => {
 				this.keyboradShow = true;
 			});

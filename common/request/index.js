@@ -23,7 +23,7 @@ export default function api(url, data = {}) {
 	request.interceptor.response((response) => { /* 请求之后拦截器 */
 		if (response.data.code === 0) { // 服务端返回的状态码不等于200，则reject()
 			uni.showToast({
-				title: response.data.msg || '请求出错,稍后重试',
+				title: response.data.msg, /* || '请求出错,稍后重试' */
 				icon: 'none',
 				duration: 1000,
 				mask: true

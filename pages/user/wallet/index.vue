@@ -14,7 +14,7 @@
 					</view>
 					<text class="money-num">￥ {{balInfo.Money || "0.00"}}</text>
 					<text class="text-olive">
-						<text>游戏币：{{balInfo.Coins || "0"}}</text>
+						<text>游戏币：{{userInfo.integral  || "0"}}</text>
 						   </text>
 					<text class="add">温馨提示: 任何冒充工作人员索要您帐号信息的私信均为诈骗信息,请您提高警惕,切勿上当受骗。</text>
 				</view>

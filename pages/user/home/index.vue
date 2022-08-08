@@ -6,7 +6,7 @@
 					<view class="flex">
 						<image class="read-img" :src="userInfoData.avatarUrl" mode="aspectFill" />
 						<view class="flex-box">
-							<view class="flex-box-text">姓名：{{ userInfoData.username }}({{ userData.id }})</view>
+							<view class="flex-box-text">姓名：{{ userInfoData.username }}({{ userInfoData.merchants.merchantsName }})</view>
 							<view class="flex-box-text">手机号：{{ userInfoData.phoneNumber }}</view>
 						</view>
 						<view class="arrow arrow-one" @click="showModal = true"><span>详细说明</span></view>
@@ -18,7 +18,7 @@
 							<view class="tx-grid-text">
 								<view class="title">可提现余额</view>
 								<view class="money">
-									<text>{{ userData.withdrawable }}</text>
+									<text>{{ userInfoData.merchants.merchantsCommission  }}</text>
 									<text class="money-b">元</text>
 								</view>
 							</view>
@@ -26,7 +26,7 @@
 						<view class="tx-grid" @click="navTo('/pages/user/withdraw/index')"><span class="tx-grid-comm-sign">立即提现</span></view>
 					</view>
 					<view class="palace palace-one">
-						<view class="palace-grid">
+						<!-- <view class="palace-grid">
 							<view class="palace-grid-text">
 								<view class="palace-grid-text-data">
 									<text>{{ userData.coming }}</text>
@@ -34,11 +34,11 @@
 								</view>
 								<view class="palace-grid-text-name">即将到账</view>
 							</view>
-						</view>
+						</view> -->
 						<view class="palace-grid">
 							<view class="palace-grid-text">
 								<view class="palace-grid-text-data">
-									<text>{{ userData.came }}</text>
+									<text>{{ userData.grandTotal }}</text>
 									<text class="palace-grid-text-data-b">元</text>
 								</view>
 								<view class="palace-grid-text-name">累计到账</view>
@@ -47,7 +47,7 @@
 						<view class="palace-grid">
 							<view class="palace-grid-text">
 								<view class="palace-grid-text-data">
-									<text>{{ userData.withdrawed }}</text>
+									<text>{{ userData.accumulatedWithdrawal }}</text>
 									<text class="palace-grid-text-data-b">元</text>
 								</view>
 								<view class="palace-grid-text-name">累计提现</view>
@@ -79,14 +79,14 @@
 					<view class="list-item" v-for="(item, index) in list" :key="index" hover-class="hover" :hover-stay-time="150" bindtap="detail">
 						<view class="content-box">
 							<view class="des-box">
-								<view class="tit">{{ currentTab == 3 ? '流水号：' + item.extract_no : '设备号：' + item.order_no }}</view>
+								<view class="tit">{{ currentTab == 3 ? '流水号：' + item.orderNumber : '设备号：' + item.equipmentCode }}</view>
 								<view v-if="currentTab == 3" class="source" :style="{ color: item.status == 1 ? '#4caf50' : item.status == 2 ? '#ff1e0f' : '#00b7ff' }">
 									提现{{ item.status == 1 ? '成功' : item.status == 2 ? '失败' : '处理中' }}
 								</view>
-								<view class="time">{{ item.create_time }}</view>
+								<view class="time">{{ item.createDatetime }}</view>
 							</view>
 						</view>
-						<view class="money" :class="{ less: is_withdraw }">{{ is_withdraw ? '-' : '+' }}{{ currentTab == 3 ? item.real_money : item.money }}</view>
+						<view class="money" :class="{ less: is_withdraw }">{{ is_withdraw ? '-' : '+' }}{{item.qty}}</view>
 					</view>
 				</view>
 				<view class="tip">仅显示近半年内的收支记录</view>
@@ -194,15 +194,33 @@ export default {
 			this.select = e;
 		},
 		async loadData() {
-			this.userData = await this.$json.json('userData');
-			this.list = await this.$json.json('incomeMonth');
+			let that = this
+			that.loadStatus = 'loading';
+			that.$api('user.logsList', {
+				openId: that.userInfo.openId
+			}).then(res => {
+				if (res.flag) {
+					console.log(res.data)
+					this.userData = res.data
+					that.list = [...that.list, ...res.data.qtyLogs];
+					that.lastPage = res.data.qtyLogs.last_page;
+					if (that.currentPage < res.data.qtyLogs.last_page) {
+						that.loadStatus = '';
+					} else {
+						that.loadStatus = 'over';
+					}
+				}
+			});
+			/* this.userData = await this.$json.json('userData');
+			this.list = await this.$json.json('incomeMonth'); */
 		},
 		async getFundList() {
-			if (this.currentTab == 3) {
+			this.loadData();
+			/* if (this.currentTab == 3) {
 				this.list = await this.$json.json('extractList');
 			} else {
 				this.list = await this.$json.json(this.date);
-			}
+			} */
 		},
 		changeTab(e) {
 			this.currentTab = e.index;

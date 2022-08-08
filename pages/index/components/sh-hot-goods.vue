@@ -13,7 +13,7 @@
 
 <script>
 import appGoodsCard from '@/components/app-goods-card/app-goods-card.vue';
-import goods from '@/csJson/goods.json';
+import goods from '@/csJson/scoreList.json';
 export default {
 	components: {
 		appGoodsCard

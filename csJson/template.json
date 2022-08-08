@@ -107,7 +107,7 @@
 			"category": "home",
 			"name": "标题栏",
 			"content": {
-				"name": "猜你喜欢",
+				"name": "游戏币",
 				"color": "#000000",
 				"image": "https://cfzx.gzfzdev.com/movie/uploadFiles/image/title1.png"
 			},
@@ -160,27 +160,27 @@
 				"list": [
 					{
 						"name": "商家注册",
-						"image": "https://i.postimg.cc/MKBRVTLf/image.png",
+						"image": "https://i.postimg.cc/zGJNGSX0/1.png",
 						"path": "/pages/public/register",
 						"path_name": "注册",
 						"path_type": 1
 					},
 					{
 						"name": "设备管理",
-						"image": "https://i.postimg.cc/0QRkDkKZ/image.png",
+						"image": "https://i.postimg.cc/Y0KKKQsN/image.png",
 						"path": "/pages/user/equipment/list",
 						"path_name": "设备",
 						"path_type": 1
 					},{
 						"name": "收益统计",
-						"image": "https://i.postimg.cc/8cb3CLL0/ab05b484afd9e2a21977adc79d0c456e.png",
+						"image": "https://i.postimg.cc/26WMwVS1/image.png",
 						"path": "/pages/user/home/index",
 						"path_name": "收益",
 						"path_type": 1
 					},
 					{
 						"name": "联系客服",
-						"image": "https://i.postimg.cc/Qd5b8SDP/image.png",
+						"image": "https://i.postimg.cc/DZtFv98X/1.png",
 						"path": "/pages/public/kefu/index",
 						"path_name": "客服",
 						"path_type": 2

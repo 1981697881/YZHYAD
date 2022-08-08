@@ -4,22 +4,21 @@
 			<!-- <image class="head-img" :src="item.avatar" mode=""></image> -->
 			<view class="list-content y-f">
 				<view class="title-box x-bc">
-					<text class="title padding-left one-t">{{ item.transactionType == 1?'充值':'消费' }}</text>
+					<text class="title padding-left one-t">{{ item.describe }}</text>
 					<view class="money">
-						<text v-if="item.transactionType == 1" class="add">+{{ item.qty }}</text>
+						<text v-if="item.type == 1" class="add">+{{ item.qty }}</text>
 						<text v-else class="minus">-{{ item.qty }}</text>
 					</view>
 				</view>
 				<view class="tip-box x-bc">
 					<text class="time padding-left">{{ item.createDatetime }}</text>
-					<text class="from">交易{{item.status==0?'成功':'失败'}}</text>
+					<text class="from">交易{{item.status==0?'处理中':(item.status==1?'成功':'失败')}}</text>
 				</view>
 			</view>
 		</view>
 		<view v-if="walletList.length" class="cu-load text-gray" :class="loadStatus"></view>
 	</view>
 </template>
-
 <script>
 	import { mapMutations, mapActions, mapState } from 'vuex';
 export default {
@@ -53,8 +52,8 @@ export default {
 		getWalletLog() {
 			let that = this;
 			that.loadStatus = 'loading';
-			that.$api('user.transactionLogDorRList', {
-				phoneNumber: that.userInfo.phoneNumber
+			that.$api('user.userLogsList', {
+				openId: that.userInfo.openId
 			}).then(res => {
 				if (res.flag) {
 					that.walletList = [...that.walletList, ...res.data];

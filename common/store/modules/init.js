@@ -101,11 +101,11 @@ const actions = {
 			let res = template
 			api('posterList').then(reso => {
 				let data = []
-				reso.data.A.forEach((v)=>{
+				reso.data.forEach((v)=>{
 					let obj = {
 					"name": v.posterName,
 					"bgcolor": "#2B4055",
-					"image": "https://cfzx.gzfzdev.com/movie/uploadFiles/image/"+v.posterPhoto,
+					"image": "http://14.29.254.232:50050/uploadFiles/image/"+v.posterPhoto,
 					"path": v.posterUrl || 'pages/index/index',
 					"path_name": "",
 					"path_type": 1
@@ -115,7 +115,7 @@ const actions = {
 				res.data.home[1].content.list=data
 				res.data.home[4].content.list=reso.data.B
 			})
-			api('menuList').then(reso => {
+			/* api('menuList').then(reso => {
 				let data = []
 				reso.data.forEach((v,vindex)=>{
 					let obj = {
@@ -128,7 +128,7 @@ const actions = {
 					data.push(obj)
 				})
 				res.data.home[2].content.list=data
-			})
+			}) */
 			uni.setStorageSync('templateData', res.data);
 			commit('TEMPLATE_DATA', res.data);
 			if(res.code == 0){

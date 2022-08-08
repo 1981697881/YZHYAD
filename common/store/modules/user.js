@@ -97,7 +97,27 @@ const actions = {
 				reject(e)
 			})
 		})
-	},// 获取用户余额
+	},
+	// 获取商家信息-普通
+	getMerchantsDetails({
+		commit
+	}) {
+		return new Promise((resolve, reject) => {
+			api('user.merchants',{openId: uni.getStorageSync('openid')}).then(res => {
+				if(res.flag){
+					commit('LOGIN_TIP', false);
+					commit('USER_INFO', res.data);
+					uni.setStorageSync('merchantsInfo', res.data);
+				}else{
+					commit('LOGIN_TIP', true);
+				}
+				resolve(res)
+			}).catch(e => {
+				reject(e)
+			})
+		})
+	},
+	// 获取用户余额
 	getUserBalance({
 		commit
 	}) {

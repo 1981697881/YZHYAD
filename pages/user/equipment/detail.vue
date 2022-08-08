@@ -4,8 +4,6 @@
 		<view class="detail_box app-selector" v-else>
 			<view class="detail-content">
 				<view class="goodes_detail_swiper-box">
-					<!-- 拼团滚动提示 -->
-					<sh-groupon-tip v-if="false"></sh-groupon-tip>
 					<!-- 详情轮播 -->
 					<swiper class="carousel" circular @change="swiperChange" :autoplay="true">
 						<swiper-item @tap="tools.previewImage(goodsInfo.images, swiperCurrent)" v-for="(img, index) in goodsInfo.images" :key="index" class="carousel-item">
@@ -41,30 +39,6 @@
 					@changeType="changeType"
 					@getSkuText="getSkuText"
 				></app-sku>
-				<!-- 服务 -->
-				<sh-serve v-if="goodsInfo.service.length" v-model="showServe" :serveList="goodsInfo.service"></sh-serve>
-				<!-- 优惠券 -->
-				<sh-coupon
-					v-if="goodsInfo.coupons && goodsInfo.coupons.length && goodsInfo.activity_type !== 'seckill' && goodsInfo.activity_type !== 'groupon' && detailType !== 'score'"
-					:couponList="goodsInfo.coupons"
-				></sh-coupon>
-				<!-- 拼团人-->
-				<sh-groupon
-					v-if="goodsInfo.activity && goodsInfo.activity.type === 'groupon' && goodsInfo.activity.rules.team_card === '1' && detailType !== 'score'"
-					:grouponData="goodsInfo"
-				></sh-groupon>
-				<!-- 拼团玩法 -->
-				<view
-					v-if="goodsInfo.activity && !!goodsInfo.activity.richtext_id && goodsInfo.activity_type !== 'seckill'"
-					class="groupon-play x-bc px20"
-					@tap="jump('/pages/public/richtext', { id: goodsInfo.activity.richtext_id })"
-				>
-					<view class="x-f">
-						<text class="title">玩法</text>
-						<view class="description one-t">{{ goodsInfo.activity.richtext_title || '开团/参团·邀请好友·人满发货（不满退款' }}</view>
-					</view>
-					<text class="cuIcon-right" style="color: #bfbfbf;"></text>
-				</view>
 				<!-- 选项卡 -->
 				<view class="sticky-box">
 					<view class="tab-box x-f">
@@ -100,7 +74,7 @@
 				</view>
 			</view>
 			<!-- 积分商品foot -->
-			<view class="score-foot-box x-f" v-if="!showSku && !showServe && detailType === 'score'">
+			<!-- <view class="score-foot-box x-f" v-if="!showSku && !showServe && detailType === 'score'">
 				<view class="left x-f">
 					<view class="tools-item y-f" @tap="goHome">
 						<image class="tool-img" src="https://cfzx.gzfzdev.com/movie/uploadFiles/image/tab_home_sel.png" mode=""></image>
@@ -110,9 +84,9 @@
 				<view class="right">
 					<view class="btn-box x-ac"><button class="cu-btn  seckill-btn" @tap="goPay">立即兑换</button></view>
 				</view>
-			</view>
+			</view> -->
 			<!-- 其他商品foot -->
-			<view class="detail-foot_box  x-f" v-if="!showSku && !showServe && detailType !== 'score'">
+			<view class="detail-foot_box  x-f" >
 				<view class="left x-f">
 					<view class="tools-item y-f" @tap="goHome">
 						<image class="tool-img app-selector-circular" src="https://cfzx.gzfzdev.com/movie/uploadFiles/image/tab_home_sel.png" mode=""></image>
@@ -294,14 +268,14 @@ export default {
 			if (res.code == 0) {
 				that.$tools.toast(res.msg);
 			}
-			this.$api('score.detail', {
+			/* this.$api('score.detail', {
 				id: this.$Route.query.id
 			}).then(res => {
 				console.log(JSON.stringify(res))
 				if (res.code === 1) {
 					this.goodsInfo = res.data;
 				}
-			});
+			}); */
 		},
 		// 商品详情
 		getGoodsDetail() {

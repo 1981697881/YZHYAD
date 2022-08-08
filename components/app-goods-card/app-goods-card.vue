@@ -1,15 +1,15 @@
 <template>
-	<view class="goods-box" v-if="detail" @tap="jump('/pages/cinema/detail/index', { id: detail.id })">
+	<view class="goods-box" v-if="detail" @tap="jump('/pages/goods/detail/index', { id: detail.id })">
 		<view class="img-box">
 			<!-- <image v-if="isTag && detail.activity" class="tag-img" :src="tagPath[detail.activity.type]" mode=""></image> -->
-			<image class="img" :src="detail.image" lazy-load mode="scaleToFill"></image>
+			<image class="img" src="https://cfzx.gzfzdev.com/movie/uploadFiles/image/zanwu.jpg" lazy-load mode="scaleToFill"></image>
 		</view>
 		<view class="tip one-t">{{ detail.subtitle }}</view>
-		<view class="title more-t">{{ detail.title }}</view>
+		<!-- <view class="title more-t">{{ detail.title }}</view> -->
 		<view class="price-box">
 			<view class="flex x-bc align-end">
-				<view class="current">{{ detail.activity_type === 'groupon' ? detail.groupon_price : detail.price }}</view>
-				<view class="sales miso-font">{{ detail.sales }}人 想看</view>
+				<view class="current">{{ detail.price }}</view>
+				<view class="sales miso-font">{{ detail.sales }}人 已购买</view>
 			</view>
 			<view class="x-f tag-box">
 				<!-- <view class="discount">新人礼</view>
@@ -58,16 +58,14 @@ export default {
 .goods-box {
 	width: 345rpx;
 	background: #fff;
-	padding-bottom: 20rpx;
+	padding-bottom: 10rpx;
 	border-radius: 20rpx;
 	overflow: hidden;
-
 	.img-box {
 		width: 345rpx;
-		height: 450rpx;
+		height: 350rpx;
 		overflow: hidden;
 		position: relative;
-
 		.tag-img {
 			position: absolute;
 			left: 0;
@@ -105,7 +103,7 @@ export default {
 	}
 
 	.price-box {
-		padding: 10rpx 20rpx 0;
+		padding: 20rpx 20rpx 0;
 		width: 344rpx;
 		.sales {
 			font-size: 20rpx;

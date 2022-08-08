@@ -16,8 +16,8 @@ export default {
 		// desc: '获取门店',
 	},
 	posterList:{
-		url: 'app/api/posterList',
-		auth: false,
+		url: 'poster/findPosterIfMerchants',
+		auth: true,
 		method: 'POST',
 		// desc: '获取广告轮播',
 	},
@@ -97,34 +97,6 @@ export default {
 			// desc: '签到',
 		}
 	},
-
-	/** 同步路由 ↓ **/
-	dev: {
-		asyncLink: {
-			url: 'index/asyncLink',
-			auth: false,
-			method: 'POST',
-			// desc: '路由表',
-		},
-		asyncDecorateScreenShot: {
-			url: 'index/asyncDecorateScreenShot',
-			auth: false,
-			method: 'POST',
-			// desc: '更新店铺装修截图',
-		},
-		asyncBannerBgColor: {
-			url: 'index/asyncBannerBgColor',
-			auth: false,
-			method: 'POST',
-			// desc: '路由表',
-		},
-		debug: {
-			url: 'index/debugLog',
-			auth: false,
-			method: 'POST',
-		}
-	},
-
 	/** 富文本  ↓ **/
 	richtext: {
 		url: 'index/richtext',
@@ -219,158 +191,35 @@ export default {
 			// desc: '商品评论分类',
 		},
 	},
-	/** 票夹 ↓ **/
-	wallet:{
-		lists: {
-			url: 'memberTicket/userTicketForm',
-			auth: true,
-			method: 'POST',
-			// desc: '票劵列表',
-		},
-		detail: {
-			url: 'FH/getTicketInfo',
-			auth: true,
-			method: 'POST',
-			// desc: '票劵详情',
-		},
-	},
-	/** 影讯 ↓ **/
-	cinema: {
-		lists: {
-			url: 'app/api/hotMovieList',
-			auth: false,
-			method: 'POST',
-			// desc: '影片列表',
-		},
-		playList: {
-			url: 'app/api/playList',
-			auth: false,
-			method: 'POST',
-			// desc: '机台列表',
-		},
-		playMessage: {
-			url: 'app/api/playMessage',
-			auth: false,
-			method: 'POST',
-			// desc: '机台列表',
-		},
-		filmLists: {
-			url: 'app/api/schedulesByMovie',
-			auth: false,
-			method: 'POST',
-			// desc: '影片的影城和场次',
-		},
-		seatsLists: {
-			url: 'app/api/scheduleSeats',
-			auth: false,
-			method: 'POST',
-			// desc: '座位列表',
-		},
-		SchedulesSoldSeats: {
-			url: 'app/api/downloadScheduleSoldSeats',
-			auth: false,
-			method: 'POST',
-			// desc: '场次座位状态',
-		},lockSeats: {
-			url: 'FH/lockSeats',
-			auth: true,
-			method: 'POST',
-			// desc: '锁位',
-		},
-		confirmOrder: {
-			url: 'FH/confirmOrder',
-			auth: true,
-			method: 'POST',
-			// desc: '确认订单',
-		},
-		escSeats: {
-			url: 'FH/releaseSeats',
-			auth: true,
-			method: 'POST',
-			// desc: '取消锁位',
-		},
-		studios: {
-			url: 'app/api/locations',
-			auth: false,
-			method: 'POST',
-			// desc: '影城',
-		},locationList: {
-			url: 'app/api/locationList',
-			auth: false,
-			method: 'POST',
-			// desc: '影城',
-		},
-		locationMovies: {
-			url: 'app/api/locationMovies',
-			auth: false,
-			method: 'POST',
-			// desc: '影城下的影片',
-		},
-		locationSchedules: {
-			url: 'app/api/locationSchedules',
-			auth: false,
-			method: 'POST',
-			// desc: '影城下影片的场次',
-		},
-		movieMessage: {
-			url: 'app/api/movieMessage',
-			auth: false,
-			method: 'POST',
-			// desc: '影片详情',
-		},
+	/** 设备 ↓ **/
+	 device: {
+		 findEquipmentByPage: {
+		 	url: 'equipment/findEquipmentByPage',
+		 	auth: true,
+		 	method: 'POST',
+		 	// desc: '设备查询',
+		 },
+		 sendMessage: {
+		 	url: 'equipment/sendMessage',
+		 	auth: true,
+		 	method: 'POST',
+		 	// desc: '设备更新或上分',
+		 }, checkEquipment: {
+		 	url: 'equipment/checkEquipment',
+		 	auth: true,
+		 	method: 'POST',
+		 	// desc: '设备查询',
+		 },
 	},
 	/** 商品 ↓ **/
 	goods: {
-		lists: {
-			url: 'V8/getMixPackage',
-			auth: false,
-			method: 'POST',
-			// desc: '商品列表',
-		},
-		detail: {
-			url: 'V8/getPackageDetailInfo',
-			auth: false,
-			method: 'POST',
-			// desc: '商品详情',
-		},
-		commodityList: {
-			url: 'app/api/commodityList',
-			auth: false,
-			method: 'POST',
-			// desc: '卖品列表',
-		},
 		amountMoneyList: {
 			url: 'amountMoney/amountMoneyList',
 			auth: false,
 			method: 'GET',
 			// desc: '充值金额列表',
 		},
-		payGoodsMoney: {
-			url: 'WeChat/payGoodsMoney',
-			auth: true,
-			method: 'POST',
-			// desc: '卖品支付',
-		},addGoodsOrder: {
-			url: 'memberGoods/addGoodsOrder',
-			auth: true,
-			method: 'POST',
-			// desc: '卖品余额支付生成订单',
-		},getMixPackageOrderList: {
-			url: 'V8/getMixPackageOrderList',
-			auth: true,
-			method: 'POST',
-			// desc: '卖品订单',
-		},depositMixPackage: {
-			url: 'V8/depositMixPackage',
-			auth: true,
-			method: 'POST',
-			// desc: '卖品确认订单',
-		},getMixPackageOrderDetail: {
-			url: 'V8/getMixPackageOrderDetail',
-			auth: true,
-			method: 'POST',
-			// desc: '卖品订单明细',
-		},payCoinMoney: {
+		payCoinMoney: {
 			url: 'WeChat/payCoinMoney',
 			auth: true,
 			method: 'POST',
@@ -392,7 +241,6 @@ export default {
 			method: 'POST',
 			// desc: '积分充值',
 		},
-		
 		memberGoodsList: {
 			url: 'memberGoods/memberGoodsList',
 			auth: true,
@@ -470,119 +318,67 @@ export default {
 
 	/** 用户 ↓ **/
 	user: {
-		info: {
-			url: 'user',
-			auth: true,
-			method: 'GET',
-			// desc: '用户信息',
-		},getMiniAuth: {
-			url: 'V8/getMiniAuth',
-			auth: true,
-			method: 'GET',
-			// desc: '获取智科公众号id',
-		},getCustomerList: {
-			url: 'V8/getCustomerList',
-			auth: true,
-			method: 'POST',
-			// desc: '获取智科公众号id',
-		},balance: {
-			url: 'V8/Balance',
-			auth: true,
-			method: 'POST',
-			// desc: '用户余额',
-		},balance2: {
-			url: 'V8/Balance2',
-			auth: true,
-			method: 'POST',
-			// desc: '用户余额',
-		},memberBindSimple: {
-			url: 'V8/memberBindSimple',
-			auth: true,
-			method: 'POST',
-			// desc: '用户绑卡',
-		},createMember: {
-			url: 'V8/createMember',
-			auth: true,
-			method: 'POST',
-			// desc: '成为会员',
-		},deduction: {
-			url: 'V8/Deduction',
-			auth: true,
-			method: 'POST',
-			// desc: '用户余额操作',
-		},
-		getCustPayQrCode: {
-			url: 'V8/getCustPayQrCode',
-			auth: true,
-			method: 'POST',
-			// desc: '用户二维码（v8）',
-		},
-		recharge: {
-			url: 'V8/Recharge',
-			auth: true,
-			method: 'POST',
-			// desc: 'v8用户充值',
-		},payRecharge: {
-			url: 'WeChat/payRechargeMoney',
-			auth: true,
-			method: 'POST',
-			// desc: '用户充值生成预付订单',
-		},
-		member: {
+		//设备列表
+		/* member: {
 			url: 'member/loginMember',
 			auth: true,
 			method: 'POST',
 			// desc: '用户信息',
+		}, */
+		member: {
+			url: 'merchants/loginMember',
+			auth: true,
+			method: 'POST',
+			// desc: '用户信息',
 		},
-		transactionLogDorRList: {
-			url: 'transactionLog/transactionLogDorRList',
+		userLogsList: {
+			url: 'qtyLogs/userLogsList',
 			auth: true,
 			method: 'POST',
 			// desc: '用户钱包账单列表',
 		},
-
+		logsList: {
+			url: 'qtyLogs/logsList',
+			auth: true,
+			method: 'POST',
+			// desc: '商家钱包账单列表',
+		},
 		profile: {
 			url: 'user/profile',
 			auth: true,
 			method: 'POST',
 			// desc: '修改用户信息',
 		},
-
 		changemobile: {
 			url: 'user/changemobile',
 			auth: true,
 			method: 'POST',
 			// desc: '修改手机号',
 		},
-
 		changepwd: {
 			url: 'user/changepwd',
 			auth: true,
 			method: 'POST',
 			// desc: '修改密码',
 		},
-
 		resetpwd: {
 			url: 'user/resetpwd',
 			auth: false,
 			method: 'POST',
 			// desc: '重置密码',
 		},
-
 		mobileLogin: {
 			url: 'user/mobileLogin',
 			auth: false,
 			method: 'POST',
 			// desc: '手机验证码登录',
 		},
-
 		accountLogin: {
 			url: 'user/accountLogin',
 			auth: false,
 			method: 'POST',
 			// desc: '账号密码登录',
 		},
-
 		getWxMiniProgramSessionKey: {
 			url: 'weChat/memberAuthorize',
 			auth: false,
@@ -602,14 +398,12 @@ export default {
 			method: 'POST',
 			// desc: '微信小程序登录',
 		},
-
 		wxOpenPlatformLogin: {
 			url: 'user/wxOpenPlatformLogin',
 			auth: false,
 			method: 'POST',
 			// desc: '微信APP登录',
 		},
-
 		register: {
 			url: 'user/register',
 			auth: false,
@@ -621,40 +415,6 @@ export default {
 			auth: false,
 			method: 'POST',
 			// desc: '忘记密码',
-		},
-		cdKeyList: {
-			url: 'cdkey/cdKeyList',
-			auth: true,
-			method: 'POST',
-			//desc: '团体票列表',
-		},cdKeysList: {
-			url: 'memberCdkey/CdKeys',
-			auth: true,
-			method: 'POST',
-			//desc: '已购买团体票列表',
-		},CdKeyDetails: {
-			url: 'memberCdkeyDetail/CdKeyDetails',
-			auth: true,
-			method: 'POST',
-			//desc: '团体票详情',
-		},
-		exchangeCdKey: {
-			url: 'memberCdkeyDetail/exchangeCdKey',
-			auth: true,
-			method: 'POST',
-			//desc: '团体票兑换',
-		},
-		getLimitCoupon: {
-			url: 'memberCouponDetail/getLimitCoupon ',
-			auth: true,
-			method: 'POST',
-			//desc: '优惠券兑换',
-		},
-		payCdKeyMoney: {
-			url: 'WeChat/payCdKeyMoney',
-			auth: true,
-			method: 'POST',
-			//desc: '团体票购买',
 		},
 	},
 

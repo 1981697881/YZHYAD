@@ -7,24 +7,24 @@
 			</cu-custom>
 			<image class="bg" src="https://cfzx.gzfzdev.com/movie/uploadFiles/image/integral_bg.png" mode=""></image>
 			<view class="all-box x-c">
-				<text class="all-num">{{ scoreList.length }}</text>
-				<text class="all-title">添加设备</text>
+				<text class="all-num">{{ deviceList.length }}</text>
+				<text class="all-title">设备数量</text>
 			</view>
 			<view class="tab-box x-f">
 				<view class="tab-item y-f " @tap="onTab('all')"><text class="tab-name" :class="{ 'tab-active': tabDot === 'all' }">全部</text></view>
-				<view class="tab-item y-f " @tap="onTab('add')"><text class="tab-name" :class="{ 'tab-active': tabDot === 'add' }">使用中</text></view>
+				<view class="tab-item y-f " @tap="onTab('add')"><text class="tab-name" :class="{ 'tab-active': tabDot === 'add' }">运行中</text></view>
 				<view class="tab-item y-f " @tap="onTab('reduce')"><text class="tab-name" :class="{ 'tab-active': tabDot === 'reduce' }">停用</text></view>
 			</view>
 		</view>
 		<view class="content_box">
 			<scroll-view scroll-y="true" class="scroll-box" @scrolltolower="loadMore" enable-back-to-top scroll-with-animation>
 				<view class="goods-box">
-					<view class="goods-list" v-if="goods" v-for="(goods,index) in scoreList" :key="index"><sh-score-goods :scoreData="goods"></sh-score-goods></view>
+					<view class="goods-list" v-if="goods" v-for="(goods,index) in deviceList" :key="index"><sh-score-goods :scoreData="goods"></sh-score-goods></view>
 				</view>
 				<!-- 空白页 -->
-				<app-empty v-if="!scoreList.length && !isLoading" :emptyData="emptyData"></app-empty>
+				<app-empty v-if="!deviceList.length && !isLoading" :emptyData="emptyData"></app-empty>
 				<!-- 加载更多 -->
-				<view v-if="scoreList.length" class="cu-load text-gray" :class="loadStatus"></view>
+				<view v-if="deviceList.length" class="cu-load text-gray" :class="loadStatus"></view>
 				<!-- load -->
 				<app-load v-model="isLoading"></app-load>
 			</scroll-view>
@@ -43,7 +43,6 @@
 
 <script>
 import shScoreGoods from './children/sh-score-goods.vue';
-import scoreList from '@/csJson/scoreList.json';
 import { mapState, mapActions } from 'vuex';
 export default {
 	components: {
@@ -52,7 +51,7 @@ export default {
 	data() {
 		return {
 			tabDot: 'all',
-			scoreList: [],
+			deviceList: [],
 			emptyData: {
 				img: '/static/imgs/empty/empty_goods.png',
 				tip: '暂无设备数据'
@@ -76,50 +75,40 @@ export default {
 	},
 	methods: {
 		onTab(type) {
+			console.log(type)
 			this.tabDot = type;
 			this.scoreLog = [];
 			this.currentPage = 1;
-			this.scoreList = [];
+			this.deviceList = [];
 			this.$u.debounce(this.getScoreShopsList);
 		},
 		// 加载更多
 		loadMore() {
 			if (this.currentPage < this.lastPage) {
 				this.currentPage += 1;
-				this.scoreList();
+				this.deviceList();
 			}
 		},
 		//积分商品列表
 		getScoreShopsList() {
 			let that = this;
 			that.loadStatus = 'loading';
-			let res = scoreList;
-			console.log(res)
-			if (res.code == 1) {
-				that.isLoading = false;
-				that.scoreList = [...that.scoreList, ...res.data.data];
-				that.lastPage = res.data.last_page;
-				if (that.currentPage < res.data.last_page) {
-					that.loadStatus = '';
-				} else {
-					that.loadStatus = 'over';
-				}
-			}
-			/* that.$api('score.list', {
-				page: that.currentPage
+			that.$api('device.findEquipmentByPage', {
+				merchantsId: that.userinfo.merchants.id,
+				pageNum: that.currentPage,
+				pageSize: 10,
+				status: that.tabDot=="all"?null:(that.tabDot=="add"?"0":"1")
 			}).then(res => {
-				console.log(JSON.stringify(res))
-				if (res.code == 1) {
+				if (res.code == 0) {
 					that.isLoading = false;
-					that.scoreList = [...that.scoreList, ...res.data.data];
-					that.lastPage = res.data.last_page;
-					if (that.currentPage < res.data.last_page) {
+					that.deviceList = [...that.deviceList, ...res.data];
+					if (res.data.length>0) {
 						that.loadStatus = '';
 					} else {
 						that.loadStatus = 'over';
 					}
 				}
-			}); */
+			});
 		}
 	}
 };

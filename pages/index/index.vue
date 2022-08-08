@@ -15,9 +15,14 @@
 				<scroll-view class="scroll-box" scroll-y scroll-with-animation enable-back-to-top>
 					<block v-if="template" v-for="(item, index) in template" :key="index">
 						<!-- 轮播 -->
+						<!-- <video controls :poster="videoImg" object-fit="fill" class="swiper-image app-selector-rect" src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20200317.mp4"></video> -->
 						<sh-banner v-if="item.type === 'banner'" :detail="item.content"></sh-banner>
 						<!-- 二级广告 -->
 						<sh-spread v-if="item.type === 'spread'" :detail="item.content"></sh-spread>
+						<!-- 推荐商品 -->
+						<sh-hot-goods v-if="item.type === 'goods-list' || item.type === 'goods-group'" :detail="item.content"></sh-hot-goods>
+						<!-- 功能标题 -->
+						<sh-title-card v-if="item.type === 'title-block'" :detail="item.content"></sh-title-card>
 					</block>
 				</scroll-view>
 			</view>
@@ -59,6 +64,8 @@
 import shBanner from './components/sh-banner.vue';
 import shSpread from './components/sh-spread.vue';
 import shNav from './components/sh-nav.vue';
+import shHotGoods from './components/sh-hot-goods.vue';
+import shTitleCard from './components/sh-title-card.vue';
 import appNoticeModal from '@/components/app-notice-modal/app-notice-modal.vue';
 import appSkeletons from '@/components/app-skeletons/app-skeletons.vue';
 // #ifdef MP-WEIXIN
@@ -78,7 +85,9 @@ export default {
 	components: {
 		shBanner,
 		shSpread,
+		shHotGoods,
 		shNav,
+		shTitleCard,
 		appNoticeModal,
 		appSkeletons,
 		// #ifdef MP-WEIXIN
@@ -87,6 +96,7 @@ export default {
 	},
 	data() {
 		return {
+			videoImg: 'http://139.159.136.187:50080/uploadFiles/image/d02494f7a0c24790f2d10b4d5fc4b613.jpg',
 			bgcolor: 'white',
 			// #ifdef MP-WEIXIN
 			HAS_LIVE: HAS_LIVE,
@@ -136,6 +146,7 @@ export default {
 		/* this.getUserBalance() */
 	},
 	mounted() {
+		console.log(this.template)
 		
 	},
 	onShow() {

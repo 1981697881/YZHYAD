@@ -36,9 +36,7 @@
 				<app-sku
 					v-model="showSku"
 					:goodsInfo="goodsInfo"
-					:buyType="goodsInfo.activity_type == 'seckill' || detailType === 'score' ? 'buy' : buyType"
 					:grouponBuyType="grouponBuyType"
-					:goodsType="detailType === 'score' ? 'score' : 'goods'"
 					@changeType="changeType"
 					@getSkuText="getSkuText"
 				></app-sku>
